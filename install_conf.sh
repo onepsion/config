@@ -54,8 +54,8 @@ for nodeId in "${nodeIds[@]}"; do
             "CertMode": "self",
             "RejectUnknownSni": false,
             "CertDomain": "$ApiHost",
-            "CertFile": "/docker/v2x/fullchain.cer",
-            "KeyFile": "/docker/v2x/cert.key",
+            "CertFile": "/docker/v2x/cert.pem",
+            "KeyFile": "/docker/v2x/key.pem",
             "Email": "v2x@github.com",
             "Provider": "cloudflare",
             "DNSEnv": {

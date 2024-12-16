@@ -1,13 +1,14 @@
 #!/bin/bash -e
 
 if [ $# == 0 ] ; then
-   echo "please input params, nodeID1,nodeID2,nodeID3 nodeType1,nodeType2,nodeType3 apiIp apiKey"
+   echo "please input params, nodeID1,nodeID2,nodeID3 nodeType1,nodeType2,nodeType3 apiIp apiKey serverName"
    exit 0
 fi
 NodeIDStr=$1
 NodeTypeStr=$2
 ApiHost=$3
 ApiKey=$4
+ServerName=$5
 core="sing"
 
 mkdir -p "/docker/v2x/"
@@ -53,7 +54,7 @@ for nodeId in "${nodeIds[@]}"; do
         "CertConfig": {
             "CertMode": "self",
             "RejectUnknownSni": false,
-            "CertDomain": "$ApiHost",
+            "CertDomain": "$ServerName",
             "CertFile": "/docker/v2x/cert.pem",
             "KeyFile": "/docker/v2x/key.pem",
             "Email": "v2x@github.com",

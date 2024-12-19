@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 if [ $# == 0 ] ; then
-   echo "please input params, nodeID1,nodeID2,nodeID3 nodeType1,nodeType2,nodeType3 apiIp apiKey serverName"
+   echo "please input params, nodeID1,nodeID2,nodeID3 nodeType1,nodeType2,nodeType3 apiIp apiKey serverName email token"
    exit 0
 fi
 NodeIDStr=$1
@@ -9,6 +9,8 @@ NodeTypeStr=$2
 ApiHost=$3
 ApiKey=$4
 ServerName=$5
+Email=$6
+Token=$7
 core="sing"
 
 mkdir -p "/docker/v2x/"
@@ -52,15 +54,15 @@ for nodeId in "${nodeIds[@]}"; do
         "EnableTFO": true,
         "DNSType": "UseIPv4",
         "CertConfig": {
-            "CertMode": "self",
+            "CertMode": "dns",
             "RejectUnknownSni": false,
             "CertDomain": "$ServerName",
-            "CertFile": "/etc/v2x/cert.pem",
-            "KeyFile": "/etc/v2x/key.pem",
-            "Email": "v2x@github.com",
+            "CertFile": "/etc/v2x/fullchain.pem",
+            "KeyFile": "/etc/v2x/cert.key",
+            "Email": "$Email",
             "Provider": "cloudflare",
             "DNSEnv": {
-                "EnvName": "env1"
+                "CF_DNS_API_TOKEN": "$Token"
             }
         }
     }

@@ -55,8 +55,8 @@ for nodeId in "${nodeIds[@]}"; do
             "CertMode": "self",
             "RejectUnknownSni": false,
             "CertDomain": "$ServerName",
-            "CertFile": "/docker/v2x/cert.pem",
-            "KeyFile": "/docker/v2x/key.pem",
+            "CertFile": "/etc/v2x/cert.pem",
+            "KeyFile": "/etc/v2x/key.pem",
             "Email": "v2x@github.com",
             "Provider": "cloudflare",
             "DNSEnv": {

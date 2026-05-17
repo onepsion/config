@@ -64,8 +64,13 @@ for nodeId in "${nodeIds[@]}"; do
             "Provider": "cloudflare",
             "EABKid": "ucooqt0IYL42cbYFgxwbWA",
             "EABHmacKey": "ATwHgYKuhzyJ1gGMhiongEAgW5kUoGhUUmgvk86jO364-jHOw_4bDXMocVXozEjERRblu7iEGtQxeqN8L7vbeQ",
+            "DNSResolvers": ["1.1.1.1:53", "1.0.0.1:53", "8.8.8.8:53", "8.8.4.4:53"],
+            "DNSPropagationWait": 120,
+            "DNSTimeout": 10,
             "DNSEnv": {
-                "CF_DNS_API_TOKEN": "$Token"
+                "CF_DNS_API_TOKEN": "$Token",
+                "CLOUDFLARE_PROPAGATION_TIMEOUT": "300",
+                "CLOUDFLARE_POLLING_INTERVAL": "5"
             }
         }
     }

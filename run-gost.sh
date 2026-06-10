@@ -12,6 +12,9 @@ docker run -d \
   --name "$CONTAINER_NAME" \
   --restart unless-stopped \
   --network host \
+  --log-driver json-file \
+  --log-opt max-size=20m \
+  --log-opt max-file=5 \
   "$IMAGE" \
   -L "tcp://:14443/5.34.221.16:14443" \
   -L "tcp://:20133/103.135.103.90:20133" \
